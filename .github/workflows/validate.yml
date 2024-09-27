@@ -22,3 +22,4 @@ jobs:
         with:
           comment: "true" # enable comment mode
           name: json-yaml-validate 
+          json_schema: .schema/ar7.schema.json
