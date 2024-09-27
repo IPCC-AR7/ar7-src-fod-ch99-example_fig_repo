@@ -1,4 +1,4 @@
-name: json-yaml-validate 
+name: json-yaml-validate
 on:
   push:
     branches:
@@ -25,4 +25,5 @@ jobs:
             - metadata.yml
           yaml_as_json: "true"
           json_schema: .schema/ar7.schema.json
+          ajv_strict_mode: "false"
 
