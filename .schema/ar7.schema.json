@@ -207,7 +207,7 @@
             "minLength": 2,
             "maxLength": 180,
             "$comment": "dataType",
-            "$id": "#/definitions/characters80"
+            "$id": "#/definitions/characters180"
         },
          "count": {
             "description": "Number of datasets",
