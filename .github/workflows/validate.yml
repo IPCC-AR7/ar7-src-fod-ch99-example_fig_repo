@@ -29,7 +29,7 @@ jobs:
 
       - name: Check mandatory files are present
         id: check_files
-        uses: thebinaryfelix/check-file-existence-action@v1
+        uses: thebinaryfelix/check-file-existence-action@v1.0.0
         with:
           files: 'LICENSE, README.md, info.yml, .schema/info.json, data/README.md, *.png'
 
