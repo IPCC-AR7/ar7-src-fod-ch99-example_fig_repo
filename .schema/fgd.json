@@ -1,6 +1,6 @@
 {
   "$defs": {
-    "FGDReferences": {
+    "FGDReference": {
       "additionalProperties": true,
       "description": "Model for dataset information used in figures, with mandatory DOI.",
       "properties": {
@@ -27,7 +27,7 @@
         "filename",
         "doi"
       ],
-      "title": "FGDReferences",
+      "title": "FGDReference",
       "type": "object"
     }
   },
@@ -42,18 +42,18 @@
       "title": "Abstract",
       "type": "string"
     },
-    "references": {
+    "reference": {
       "items": {
-        "$ref": "#/$defs/FGDReferences"
+        "$ref": "#/$defs/FGDReference"
       },
-      "title": "References",
+      "title": "Reference",
       "type": "array"
     }
   },
   "required": [
     "title",
     "abstract",
-    "references"
+    "reference"
   ],
   "title": "FGDInfo",
   "type": "object"
