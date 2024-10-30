@@ -1,101 +1,59 @@
 {
   "$defs": {
-    "Authors": {
-      "description": "Model for author information for figures.",
-      "properties": {
-        "name": {
-          "title": "Name of the author",
-          "type": "string"
-        },
-        "orcid": {
-          "description": "A stable, public identifier for a researcher from https://orcid.com",
-          "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}(\\d|X)$",
-          "title": "ORCID",
-          "type": "string"
-        }
-      },
-      "required": [
-        "name",
-        "orcid"
-      ],
-      "title": "Authors",
-      "type": "object"
-    },
-    "Datasets": {
+    "References": {
+      "additionalProperties": true,
       "description": "Model for dataset information used in figures.",
       "properties": {
-        "name": {
-          "title": "Name",
+        "title": {
+          "title": "Title",
           "type": "string"
         },
-        "path": {
-          "title": "Path",
+        "type": {
+          "title": "Type",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
           "type": "string"
         },
         "doi": {
           "default": null,
-          "description": "A unique identifier for a dataset, starting with https://doi.org/",
-          "format": "uri",
-          "minLength": 1,
-          "title": "Digital Object Identifier",
+          "title": "Doi",
           "type": "string"
         }
       },
       "required": [
-        "name",
-        "path"
+        "title",
+        "type",
+        "filename"
       ],
-      "title": "Datasets",
+      "title": "References",
       "type": "object"
     }
   },
-  "description": "Model for SOD figure repository info.yml file.\n\nprint(json.dumps(, indent=2))",
+  "additionalProperties": true,
+  "description": "Model for SOD figure repository  CITATION.cff file.\n    ",
   "properties": {
     "title": {
       "title": "Title",
       "type": "string"
     },
-    "caption": {
-      "title": "Caption",
+    "abstract": {
+      "title": "Abstract",
       "type": "string"
     },
-    "filename": {
-      "pattern": "ar7-(?:src|wg1|wg2|wg3|spm)-sod-\\w+-\\w+\\.v\\d\\.\\d\\.png",
-      "title": "File name of the figure",
-      "type": "string"
-    },
-    "authors": {
+    "references": {
       "items": {
-        "$ref": "#/$defs/Authors"
+        "$ref": "#/$defs/References"
       },
-      "minItems": 1,
-      "title": "Authors",
+      "title": "References",
       "type": "array"
-    },
-    "software": {
-      "title": "Software",
-      "type": "string"
-    },
-    "datasets": {
-      "items": {
-        "$ref": "#/$defs/Datasets"
-      },
-      "title": "Datasets",
-      "type": "array"
-    },
-    "script": {
-      "default": null,
-      "title": "Script",
-      "type": "string"
     }
   },
   "required": [
     "title",
-    "caption",
-    "filename",
-    "authors",
-    "software",
-    "datasets"
+    "abstract",
+    "references"
   ],
   "title": "SODInfo",
   "type": "object"
