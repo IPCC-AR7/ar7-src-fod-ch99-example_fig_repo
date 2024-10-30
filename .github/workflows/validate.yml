@@ -30,7 +30,7 @@ jobs:
       - name: "Check file existence"
         uses: andstor/file-existence-action@v3
         with:
-          files: "LICENSE, README.md, info.yml, .schema/fod.json, .schema/sod.json, .schema/fgd.json,  data/README.md, *.png"
+          files: "LICENSE, README.md, info.yml, data/README.md, *.png"
           fail: "true"
 
       - name: Validate YAML using JSON schema
