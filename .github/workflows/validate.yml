@@ -46,13 +46,16 @@ jobs:
         with:
           args: "--validate"
 
+      - name: Copy CITATION.cff to CITATION.yml
+        run: cp CITATION.cff CITATION.yml
+
       - name: Check minimum requirements according to draft version
         id: json-yaml-validate
         uses: GrantBirki/json-yaml-validate@v3.2.1
         with:
           comment: "true" # enable comment mode
           files: |
-            CITATION.cff:
+            CITATION.yml:
           yaml_as_json: "true"
           json_schema: .schema/${{ steps.regex-match.outputs.group2 }}.json
 
