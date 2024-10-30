@@ -1,6 +1,7 @@
 {
   "$defs": {
     "FGDReferences": {
+      "additionalProperties": true,
       "description": "Model for dataset information used in figures, with mandatory DOI.",
       "properties": {
         "title": {
@@ -16,10 +17,7 @@
           "type": "string"
         },
         "doi": {
-          "description": "A unique identifier for a dataset, starting with https://doi.org/",
-          "format": "uri",
-          "minLength": 1,
-          "title": "Digital Object Identifier",
+          "title": "Doi",
           "type": "string"
         }
       },
@@ -34,7 +32,7 @@
     }
   },
   "additionalProperties": true,
-  "description": "Model for FGD figure repository info.yml file.\n\nprint(json.dumps(, indent=2))",
+  "description": "Model for FGD figure repository  CITATION.cff file.\n    ",
   "properties": {
     "title": {
       "title": "Title",

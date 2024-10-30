@@ -1,6 +1,7 @@
 {
   "$defs": {
     "References": {
+      "additionalProperties": true,
       "description": "Model for dataset information used in figures.",
       "properties": {
         "title": {
@@ -17,10 +18,7 @@
         },
         "doi": {
           "default": null,
-          "description": "A unique identifier for a dataset, starting with https://doi.org/",
-          "format": "uri",
-          "minLength": 1,
-          "title": "Digital Object Identifier",
+          "title": "Doi",
           "type": "string"
         }
       },
@@ -34,7 +32,7 @@
     }
   },
   "additionalProperties": true,
-  "description": "Model for FOD figure repository info.yml file.\n\nprint(json.dumps(FODInfo.model_json_shema(), indent=2))",
+  "description": "Model for FOD figure repository CITATION.cff file.\n    ",
   "properties": {
     "title": {
       "title": "Title",
