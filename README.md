@@ -78,7 +78,7 @@ references:
     type: data
     data-type: CSV
     filename: data/vostok-ice-core/vostok.icecore.co2
-    doi: https://doi.org/10.5281/zenodo.3678927
+    doi: 10.5281/zenodo.3678927
 license: CC0-1.0
 cff-version: 1.2.0
 ```

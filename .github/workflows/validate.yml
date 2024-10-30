@@ -55,7 +55,7 @@ jobs:
         with:
           comment: "true" # enable comment mode
           files: |
-            CITATION.yml:
+            CITATION.yml
           yaml_as_json: "true"
           json_schema: .schema/${{ steps.regex-match.outputs.group2 }}.json
 
