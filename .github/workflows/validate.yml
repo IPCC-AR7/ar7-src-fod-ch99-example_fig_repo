@@ -38,7 +38,7 @@ jobs:
       - name: Check file existence
         uses: andstor/file-existence-action@v3
         with:
-          files: "LICENSE, README.md, info.yml, data/README.md, *.png"
+          files: "LICENSE, README.md, CITATION.cff, data/README.md, *.png"
           fail: "true"
 
       - name: Validate CITATION.cff
