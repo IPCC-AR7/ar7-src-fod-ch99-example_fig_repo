@@ -1,35 +1,18 @@
 {
   "$defs": {
-    "Authors": {
-      "description": "Model for author information for figures.",
-      "properties": {
-        "name": {
-          "title": "Name of the author",
-          "type": "string"
-        },
-        "orcid": {
-          "description": "A stable, public identifier for a researcher from https://orcid.com",
-          "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}(\\d|X)$",
-          "title": "ORCID",
-          "type": "string"
-        }
-      },
-      "required": [
-        "name",
-        "orcid"
-      ],
-      "title": "Authors",
-      "type": "object"
-    },
-    "FGDDatasets": {
+    "FGDReferences": {
       "description": "Model for dataset information used in figures, with mandatory DOI.",
       "properties": {
-        "name": {
-          "title": "Name",
+        "title": {
+          "title": "Title",
           "type": "string"
         },
-        "path": {
-          "title": "Path",
+        "type": {
+          "title": "Type",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
           "type": "string"
         },
         "doi": {
@@ -41,61 +24,38 @@
         }
       },
       "required": [
-        "name",
-        "path",
+        "title",
+        "type",
+        "filename",
         "doi"
       ],
-      "title": "FGDDatasets",
+      "title": "FGDReferences",
       "type": "object"
     }
   },
+  "additionalProperties": true,
   "description": "Model for FGD figure repository info.yml file.\n\nprint(json.dumps(, indent=2))",
   "properties": {
     "title": {
       "title": "Title",
       "type": "string"
     },
-    "caption": {
-      "title": "Caption",
+    "abstract": {
+      "title": "Abstract",
       "type": "string"
     },
-    "filename": {
-      "pattern": "ar7-(?:src|wg1|wg2|wg3|spm)-fgd-\\w+-\\w+\\.v\\d\\.\\d\\.png",
-      "title": "File name of the figure",
-      "type": "string"
-    },
-    "authors": {
+    "references": {
       "items": {
-        "$ref": "#/$defs/Authors"
+        "$ref": "#/$defs/FGDReferences"
       },
-      "minItems": 1,
-      "title": "Authors",
+      "title": "References",
       "type": "array"
-    },
-    "software": {
-      "title": "Software",
-      "type": "string"
-    },
-    "datasets": {
-      "items": {
-        "$ref": "#/$defs/FGDDatasets"
-      },
-      "title": "Datasets",
-      "type": "array"
-    },
-    "script": {
-      "default": null,
-      "title": "Script",
-      "type": "string"
     }
   },
   "required": [
     "title",
-    "caption",
-    "filename",
-    "authors",
-    "software",
-    "datasets"
+    "abstract",
+    "references"
   ],
   "title": "FGDInfo",
   "type": "object"

@@ -13,37 +13,44 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "Run regexp on repo name to extract draft order"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run regexp on repo name to extract draft order
         id: regex-match
         uses: actions-ecosystem/action-regex-match@v2
         with:
           text: ${{ github.event.repository.name }}
           regex: '^ar7-(\w+)-(\w+)-(\w+)-(\w+)$'
 
-      - name: "Echo regexp match"
+      - name: Echo regexp match
         if: ${{ steps.regex-match.outputs.match != '' }}
         run: echo "Draft order -> ${{ steps.regex-match.outputs.group2 }}"
 
-      - name: "Fail if no match"
+      - name: Fail if no match
         if: ${{ steps.regex-match.outputs.match == '' }}
         run: echo "Repository name does not match template"; exit 1
 
-      - name: "Check file existence"
+      - name: Check file existence
         uses: andstor/file-existence-action@v3
         with:
           files: "LICENSE, README.md, info.yml, data/README.md, *.png"
           fail: "true"
 
-      - name: Validate YAML using JSON schema
+      - name: Validate CITATION.cff
+        uses: dieghernan/cff-validator@v3
+
+      - name: Validate CITATION.cff according to draft version
         id: json-yaml-validate
         uses: GrantBirki/json-yaml-validate@v3.2.1
         with:
           comment: "true" # enable comment mode
           files: |
-            info.yml
+            CITATION.cff:
           yaml_as_json: "true"
           json_schema: .schema/${{ steps.regex-match.outputs.group2 }}.json
 

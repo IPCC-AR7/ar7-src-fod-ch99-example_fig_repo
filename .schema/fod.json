@@ -1,35 +1,18 @@
 {
   "$defs": {
-    "Authors": {
-      "description": "Model for author information for figures.",
-      "properties": {
-        "name": {
-          "title": "Name of the author",
-          "type": "string"
-        },
-        "orcid": {
-          "description": "A stable, public identifier for a researcher from https://orcid.com",
-          "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}(\\d|X)$",
-          "title": "ORCID",
-          "type": "string"
-        }
-      },
-      "required": [
-        "name",
-        "orcid"
-      ],
-      "title": "Authors",
-      "type": "object"
-    },
-    "Datasets": {
+    "References": {
       "description": "Model for dataset information used in figures.",
       "properties": {
-        "name": {
-          "title": "Name",
+        "title": {
+          "title": "Title",
           "type": "string"
         },
-        "path": {
-          "title": "Path",
+        "type": {
+          "title": "Type",
+          "type": "string"
+        },
+        "filename": {
+          "title": "Filename",
           "type": "string"
         },
         "doi": {
@@ -42,60 +25,37 @@
         }
       },
       "required": [
-        "name",
-        "path"
+        "title",
+        "type",
+        "filename"
       ],
-      "title": "Datasets",
+      "title": "References",
       "type": "object"
     }
   },
+  "additionalProperties": true,
   "description": "Model for FOD figure repository info.yml file.\n\nprint(json.dumps(FODInfo.model_json_shema(), indent=2))",
   "properties": {
     "title": {
       "title": "Title",
       "type": "string"
     },
-    "caption": {
-      "title": "Caption",
+    "abstract": {
+      "title": "Abstract",
       "type": "string"
     },
-    "filename": {
-      "pattern": "ar7-(?:src|wg1|wg2|wg3|spm)-fod-\\w+-\\w+\\.v\\d\\.\\d\\.png",
-      "title": "File name of the figure",
-      "type": "string"
-    },
-    "authors": {
-      "items": {
-        "$ref": "#/$defs/Authors"
-      },
-      "minItems": 1,
-      "title": "Authors",
-      "type": "array"
-    },
-    "software": {
-      "title": "Software",
-      "type": "string"
-    },
-    "datasets": {
+    "references": {
       "default": null,
       "items": {
-        "$ref": "#/$defs/Datasets"
+        "$ref": "#/$defs/References"
       },
-      "title": "Datasets",
+      "title": "References",
       "type": "array"
-    },
-    "script": {
-      "default": null,
-      "title": "Script",
-      "type": "string"
     }
   },
   "required": [
     "title",
-    "caption",
-    "filename",
-    "authors",
-    "software"
+    "abstract"
   ],
   "title": "FODInfo",
   "type": "object"
