@@ -37,7 +37,7 @@ change from one draft to the next. If you don't know yet the draft figure number
 For the first order draft (FOD), please minimally include the following content in the repo:
 
 - [ ] A metadata file (`info.yml`) indicating the figure title, authors, the figure caption and the software used (e.g. Excel, Python, R, QGIS);
-- [ ] The figure itself in PNG format (`ar7-<report>-<chapter>-fig<#>.v1.0.0.png`);
+- [ ] The figure itself in PNG format (`ar7-<report>-<draft>-<chapter>-<figure>.v1.0.png`);
 
 For the second order draft, please include the additional information: 
 - [ ] The list of datasets used in the figure, to be included in `info.yml` file (see example below). At 
@@ -60,11 +60,12 @@ practices for data and code.
 
 ## Example `info.yml` file
 
-The file ``info.yeml`` holds information about the figure, who created it, how and using what datasets.
+The file ``info.yml`` holds information about the figure, who created it, how and using what datasets.
 
 ```yaml
 title: Title of figure, e.g. Figure 4.11 | Multiple lines of evidence for global surface air temperature (GSAT) changes for the long-term period, 2081–2100, relative to the average over 1995–2014, for all five priority scenarios.
 caption: Standalone description of methods necessary to understand the figure.
+filename: ar7-src-fgd-ch5-fig2.v1.0.png
 authors:
   - name: Alice Asselin
     orcid: 0000-0000-0000-0000
@@ -75,6 +76,7 @@ datasets:
   - name: Historical CO2 Record from the Vostok Ice Core
     path: data/vostok-ice-core
     doi: https://doi.org/10.5281/zenodo.3678927
+script: fig.py
 ```
 
 Note that with every pull request into the `main` branch, actions are run to check the conformity of the repo's structure and content. 

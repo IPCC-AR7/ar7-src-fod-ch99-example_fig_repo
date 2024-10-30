@@ -60,6 +60,11 @@
       "title": "Caption",
       "type": "string"
     },
+    "filename": {
+      "pattern": "ar7-(?:src|wg1|wg2|wg3|spm)-sod-\\w+-\\w+\\.v\\d\\.\\d\\.png",
+      "title": "File name of the figure",
+      "type": "string"
+    },
     "authors": {
       "items": {
         "$ref": "#/$defs/Authors"
@@ -88,6 +93,7 @@
   "required": [
     "title",
     "caption",
+    "filename",
     "authors",
     "software",
     "datasets"
