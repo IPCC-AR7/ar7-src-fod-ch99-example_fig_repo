@@ -42,9 +42,15 @@ jobs:
           fail: "true"
 
       - name: Validate CITATION.cff
-        uses: dieghernan/cff-validator@v3
+        uses: GrantBirki/json-yaml-validate@v3.2.1
+        with:
+          comment: "true" # enable comment mode
+          files: |
+            CITATION.cff:
+          yaml_as_json: "true"
+          json_schema: .schema/citation.json
 
-      - name: Validate CITATION.cff according to draft version
+      - name: Check minimum requirements according to draft version
         id: json-yaml-validate
         uses: GrantBirki/json-yaml-validate@v3.2.1
         with:
