@@ -42,12 +42,12 @@
       "title": "Abstract",
       "type": "string"
     },
-    "reference": {
+    "references": {
       "default": null,
       "items": {
         "$ref": "#/$defs/Reference"
       },
-      "title": "Reference",
+      "title": "References",
       "type": "array"
     }
   },

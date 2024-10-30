@@ -71,7 +71,7 @@ authors:
 keywords:
   - "ice cores"
   - CO2
-reference:
+references:
   - title: Historical CO2 Record from the Vostok Ice Core
   - authors:
       - name: J.M. Barnola et al.

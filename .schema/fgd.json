@@ -42,18 +42,18 @@
       "title": "Abstract",
       "type": "string"
     },
-    "reference": {
+    "references": {
       "items": {
         "$ref": "#/$defs/FGDReference"
       },
-      "title": "Reference",
+      "title": "References",
       "type": "array"
     }
   },
   "required": [
     "title",
     "abstract",
-    "reference"
+    "references"
   ],
   "title": "FGDInfo",
   "type": "object"
