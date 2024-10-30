@@ -16,6 +16,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Run regexp on repo name to extract draft order
+        id: regex-match
+        uses: actions-ecosystem/action-regex-match@v2
+        with:
+          text: ${{ github.event.repository.name }}
+          regex: '^ar7-(\w+)-(\w+)-(\w+)-(\w+)$'
+
+      - name: Echo regexp match
+        if: ${{ steps.regex-match.outputs.match != '' }}
+        run: echo "Draft order is ${{ steps.regex-match.outputs.group2 }}"
+
       - name: Check mandatory files are present
         id: check_files
         uses: thebinaryfelix/check-file-existence-action@v1
@@ -30,6 +41,6 @@ jobs:
           files:
             - info.yml
           yaml_as_json: "true"
-          json_schema: .schema/info.json
+          json_schema: .schema/${{ steps.regex-match.outputs.group2 }}.json
 
 

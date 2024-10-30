@@ -21,8 +21,8 @@
       "title": "Authors",
       "type": "object"
     },
-    "Datasets": {
-      "description": "Model for dataset information used in figures.",
+    "FGDDatasets": {
+      "description": "Model for dataset information used in figures, with mandatory DOI.",
       "properties": {
         "name": {
           "title": "Name",
@@ -34,22 +34,23 @@
           "type": "string"
         },
         "doi": {
-          "default": null,
-          "description": "A unique identifier for a dataset",
-          "pattern": "^10\\.\\d{4,9}/[-._;()/:A-Z0-9]+$",
+          "description": "A unique identifier for a dataset, starting with https://doi.org/",
+          "format": "uri",
+          "minLength": 1,
           "title": "Digital Object Identifier",
           "type": "string"
         }
       },
       "required": [
         "name",
-        "path"
+        "path",
+        "doi"
       ],
-      "title": "Datasets",
+      "title": "FGDDatasets",
       "type": "object"
     }
   },
-  "description": "Model for figure repository info.yml file.",
+  "description": "Model for FGD figure repository info.yml file.\n\nprint(json.dumps(, indent=2))",
   "properties": {
     "title": {
       "title": "Title",
@@ -73,10 +74,15 @@
     },
     "datasets": {
       "items": {
-        "$ref": "#/$defs/Datasets"
+        "$ref": "#/$defs/FGDDatasets"
       },
       "title": "Datasets",
       "type": "array"
+    },
+    "script": {
+      "default": null,
+      "title": "Script",
+      "type": "string"
     }
   },
   "required": [
@@ -86,6 +92,6 @@
     "software",
     "datasets"
   ],
-  "title": "Info",
+  "title": "FGDInfo",
   "type": "object"
 }

@@ -24,10 +24,10 @@ referring to the table below for the abbreviations.
 |             | Atlas                                    | atlas       |
 | ``figure``  |                                          |             |
 |             | Figure 4.1                               | fig1        |
-|             | Cross-Chapter Box 4.1, Figure 1          | ccb1-fig1  |
-|             | Cross-Section Box TS.1, Figure 1         | csb1-fig1  |
-|             | Box 4.1, Figure 1                        | box1-fig1  |
-|             | Frequently Asked Questions 4.1, Figure 1 | faq1-fig1  |
+|             | Cross-Chapter Box 4.1, Figure 1          | ccb1fig1  |
+|             | Cross-Section Box TS.1, Figure 1         | csb1fig1  |
+|             | Box 4.1, Figure 1                        | box1fig1  |
+|             | Frequently Asked Questions 4.1, Figure 1 | faq1fig1  |
 
 Note that this means that we expect authors to create a new repo for each draft. This may feel like a bad practice for 
 Git users, but keeping the same repository name across drafts would lead to name conflicts, because figure numbers 
@@ -50,7 +50,8 @@ For the final government draft, please include the following additional content:
 - [ ] A `data/` directory including one subdirectory for each dataset displayed in the figure;
 - [ ] A `data/README.md` file explaining how to download the data and populate the `data/` directory. If possible, 
   automate the process using a script, e.g. `download.py` or `download.R` that can be run from the command line;
-- [ ] A DOI for each dataset listed in `info.yml`.
+- [ ] A DOI for each dataset listed in `info.yml`;
+- [ ] The name of the figure generation script in `info.yml.`
 
 Please do not include add the datasets to this repo. People who want to reproduce the figure are expected to fetch the 
 datasets themselves and store them in the `data/` directory according to instructions provided in the `data/README.md` 
