@@ -16,15 +16,15 @@ The content that TSUs expect is minimal for the First Order Draft, and grows gra
 
 For the first order draft (FOD), include the following content:
 
-- [ ] A metadata file (`CITATION.cff`) indicating the figure title, authors, the figure caption and the software used (e.g. Excel, Python, R, QGIS);
+- [ ] A metadata file (`CITATION.cff`) indicating the figure title, abstract and authors;
 - [ ] The figure itself in PNG format (e.g. `ar7-<report>-<draft>-<chapter>-<figure>.v1.0.png`);
 
 ### Second Order Draft
 
 For the second order draft (SOD), please include the additional information: 
 
-- [ ] The list of datasets used in the figure, to be included in `CITATION.cff` file (see example below). At 
-  this point, specifying a `DOI` is not strictly necessary.   
+- [ ] The list of references (datasets, papers) used to create the figure, to be included in `CITATION.cff` file (see example below). At 
+  this point, specifying a `DOI` for these references is not strictly necessary.   
 
 ### Final Government Draft
 
@@ -39,7 +39,7 @@ For the final government draft, please include the following additional content:
 - [ ] A `data/` directory including one subdirectory for each dataset displayed in the figure;
 - [ ] A `data/README.md` file explaining how to download the data and populate the `data/` directory. If possible, 
   automate the process using a script, e.g. `download.py` or `download.R` that can be run from the command line;
-- [ ] A DOI for each dataset listed in `CITATION.cff`;
+- [ ] A DOI for each reference listed in `CITATION.cff` (e.g. just `10.5281/zenodo.3678927`, without the `http://doi.org/`).
 
 Please do not include the datasets in this repo. People who want to reproduce the figure are expected to fetch the 
 datasets themselves and store them in the `data/` directory, according to instructions provided in the `data/README.md` 
