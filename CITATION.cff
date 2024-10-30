@@ -10,7 +10,7 @@ authors:
 keywords:
   - "ice cores"
   - CO2
-references:
+reference:
   - title: Historical CO2 Record from the Vostok Ice Core
     type: data
     data-type: CSV
@@ -18,8 +18,6 @@ references:
     doi: 10.5281/zenodo.3678927
     authors:
       - name: J.M. Barnola et al.
-license: CC0-1.0
 cff-version: 1.2.0
-message: >-
-  This figure was created through the IPCC AR7 process.
+message: "This figure was created through the IPCC AR7 process."
 
