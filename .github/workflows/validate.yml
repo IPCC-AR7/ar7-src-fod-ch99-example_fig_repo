@@ -41,14 +41,10 @@ jobs:
           files: "LICENSE, README.md, CITATION.cff, data/README.md, *.png"
           fail: "true"
 
-      - name: Validate CITATION.cff
-        uses: GrantBirki/json-yaml-validate@v3.2.1
+      - name: Check whether the citation metadata from CITATION.cff is valid
+        uses: citation-file-format/cffconvert-github-action@2.0.0
         with:
-          comment: "true" # enable comment mode
-          files: |
-            CITATION.cff:
-          yaml_as_json: "true"
-          json_schema: .schema/citation.json
+          args: "--validate"
 
       - name: Check minimum requirements according to draft version
         id: json-yaml-validate
