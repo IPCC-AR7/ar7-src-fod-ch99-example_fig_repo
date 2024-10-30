@@ -5,4 +5,10 @@ authors:
     orcid: 0000-0000-0000-0000
   - name: Bob Brun
     orcid: 0000-0000-0000-0001
-software: Excel  
+software: Excel
+sources:
+  - name: Historical CO2 Record from the Vostok Ice Core
+    path: data/vostok-ice-core
+    doi: https://doi.org/10.5281/zenodo.3678927
+
+

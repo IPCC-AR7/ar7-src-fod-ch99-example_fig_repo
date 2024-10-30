@@ -1,4 +1,4 @@
-name: json-yaml-validate 
+name: json-yaml-validate
 on:
   push:
     branches:
@@ -11,18 +11,36 @@ permissions:
   pull-requests: write # enable write permissions for pull request comments
 
 jobs:
-  json-yaml-validate:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: json-yaml-validate
+      - name: Run regexp on repo name to extract draft order
+        id: regex-match
+        uses: actions-ecosystem/action-regex-match@v2
+        with:
+          text: ${{ github.event.repository.name }}
+          regex: '^ar7-(\w+)-(\w+)-(\w+)-(\w+)$'
+
+      - name: Echo regexp match
+        if: ${{ steps.regex-match.outputs.match != '' }}
+        run: echo "Draft order is ${{ steps.regex-match.outputs.group2 }}"
+
+      - name: Check mandatory files are present
+        id: check_files
+        uses: thebinaryfelix/check-file-existence-action@v1
+        with:
+          files: 'LICENSE, README.md, info.yml, .schema/info.json, data/README.md, *.png'
+
+      - name: Validate YAML using JSON schema
         id: json-yaml-validate
         uses: GrantBirki/json-yaml-validate@v3.2.1
         with:
           comment: "true" # enable comment mode
           files:
-            - metadata.yml
+            - info.yml
           yaml_as_json: "true"
-          json_schema: .schema/ar7.schema.json
+          json_schema: .schema/${{ steps.regex-match.outputs.group2 }}.json
+
 

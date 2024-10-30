@@ -1,0 +1,97 @@
+{
+  "$defs": {
+    "Authors": {
+      "description": "Model for author information for figures.",
+      "properties": {
+        "name": {
+          "title": "Name of the author",
+          "type": "string"
+        },
+        "orcid": {
+          "description": "A stable, public identifier for a researcher from https://orcid.com",
+          "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}(\\d|X)$",
+          "title": "ORCID",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "orcid"
+      ],
+      "title": "Authors",
+      "type": "object"
+    },
+    "FGDDatasets": {
+      "description": "Model for dataset information used in figures, with mandatory DOI.",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "path": {
+          "format": "directory-path",
+          "title": "Path",
+          "type": "string"
+        },
+        "doi": {
+          "description": "A unique identifier for a dataset, starting with https://doi.org/",
+          "format": "uri",
+          "minLength": 1,
+          "title": "Digital Object Identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "path",
+        "doi"
+      ],
+      "title": "FGDDatasets",
+      "type": "object"
+    }
+  },
+  "description": "Model for FGD figure repository info.yml file.\n\nprint(json.dumps(, indent=2))",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "caption": {
+      "title": "Caption",
+      "type": "string"
+    },
+    "authors": {
+      "items": {
+        "$ref": "#/$defs/Authors"
+      },
+      "minItems": 1,
+      "title": "Authors",
+      "type": "array"
+    },
+    "software": {
+      "title": "Software",
+      "type": "string"
+    },
+    "datasets": {
+      "items": {
+        "$ref": "#/$defs/FGDDatasets"
+      },
+      "title": "Datasets",
+      "type": "array"
+    },
+    "script": {
+      "default": null,
+      "title": "Script",
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "caption",
+    "authors",
+    "software",
+    "datasets"
+  ],
+  "title": "FGDInfo",
+  "type": "object"
+}
