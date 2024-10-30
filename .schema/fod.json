@@ -29,7 +29,6 @@
           "type": "string"
         },
         "path": {
-          "format": "directory-path",
           "title": "Path",
           "type": "string"
         },
