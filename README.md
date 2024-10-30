@@ -32,7 +32,7 @@ referring to the table below for the abbreviations.
 Note that this means that we expect authors to create a new repo for each draft. This may feel like a bad practice for 
 Git users, but keeping the same repository name across drafts would lead to name conflicts, because figure numbers 
 change from one draft to the next. If you don't know yet the draft figure number, enter a descriptive name in the 
-``figure`` field, e.g. ``cmip7-sea-ice-extent``, and change the repo name once you know your figure's number. 
+``figure`` field, e.g. ``cmip7_sea_ice_extent``, and change the repo name once you know your figure's number. 
 
 For the first order draft (FOD), please minimally include the following content in the repo:
 
