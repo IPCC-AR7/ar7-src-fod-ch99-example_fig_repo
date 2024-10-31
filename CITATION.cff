@@ -1,9 +1,9 @@
 title: Figure X.Y | Title of the figure
 abstract: "Figure caption"
 authors:
-- family-names: Joe
-  given-names: Johnson
-  orcid: https://orcid.org/0000-0000-0000-0001
+- family-names: Huard
+  given-names: David
+  orcid: https://orcid.org/0000-0003-0311-5498
 cff-version: 1.2.0
 message: "If you use this figure, please cite it as below."
 
