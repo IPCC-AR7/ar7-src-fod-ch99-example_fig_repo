@@ -1,9 +1,9 @@
-cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+title: Figure X.Y | Title of the figure
+abstract: "Figure caption"
 authors:
 - family-names: Joe
   given-names: Johnson
-abstract: "coucou"
-title: Titre
-
+  orcid: https://orcid.org/0000-0000-0000-0001
+cff-version: 1.2.0
+message: "If you use this figure, please cite it as below."
 
