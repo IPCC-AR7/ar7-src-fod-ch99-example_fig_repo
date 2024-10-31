@@ -31,7 +31,7 @@ jobs:
             ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
           uses: zenodraft/action@0.13.3
           with:
-            concept: 123832
+            # concept: 123832
             filenames: ${{ steps.globfig.outputs.paths }}
             publish: false
             sandbox: true
