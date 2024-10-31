@@ -5,13 +5,16 @@ authors:
   given-names: David
   orcid: https://orcid.org/0000-0003-0311-5498
 references:
-  - title: Historical CO2 Record from the Vostok Ice Core
-    authors:
-      - name: J.M. Barnola et al.
-    type: data
-    data-type: CSV
-    filename: data/vostok-ice-core/vostok.icecore.co2
-    doi: 10.5281/zenodo.3678927
+- title: "Data for Figure X.Y"
+  type: data
+  authors:
+  - name: David Huard et al.
+  license: "CC-BY-4.0"
+  languages:
+  - en
+  format: csv
+  doi: 10.5281/zenodo.0000000
+repository-code: "https://github.com/IPCC-AR7/ar7-src-fod-ch99-example_fig_repo"
 cff-version: 1.2.0
-message: "If you use this figure, please cite it as below."
+message: "When citing this figure, please include both the data citation and the citation for the report component from which the figure originates."
 

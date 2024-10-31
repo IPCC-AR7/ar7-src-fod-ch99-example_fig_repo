@@ -1,0 +1,25 @@
+title: "Data for AR7 SRC Figure 5.1"
+abstract: "Data used to create Figure 5.1 in the IPCC AR7 SRC"
+authors:
+- family-names: Huard
+  given-names: David
+  orcid: https://orcid.org/0000-0003-0311-5498
+version: 1.0
+doi: 10.0000/zenodo.0000000
+references:
+- title: Historical CO2 Record from the Vostok Ice Core
+  authors:
+  - name: J.M. Barnola et al.
+  type: data
+  data-type: CSV
+  filename: vostok.icecore.co2.csv
+  version: 1.0
+  doi: 10.5281/zenodo.3678927
+keywords:
+  - "Topic 1"
+  - "Topic 2"
+repository-code: "https://github.com/IPCC-AR7/ar7-src-fod-ch99-example_fig_repo"
+date-released: 2024-10-31
+license: "CC-BY-4.0"
+cff-version: 1.2.0
+message: "When citing this dataset, please include both the data citation and the citation for the report component from which the figure originates."

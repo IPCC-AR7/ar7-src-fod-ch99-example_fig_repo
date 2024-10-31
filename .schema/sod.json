@@ -12,10 +12,6 @@
           "title": "Type",
           "type": "string"
         },
-        "filename": {
-          "title": "Filename",
-          "type": "string"
-        },
         "doi": {
           "default": null,
           "title": "Doi",
@@ -24,8 +20,7 @@
       },
       "required": [
         "title",
-        "type",
-        "filename"
+        "type"
       ],
       "title": "Reference",
       "type": "object"
