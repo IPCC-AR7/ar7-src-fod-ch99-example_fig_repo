@@ -41,25 +41,36 @@ jobs:
           files: "LICENSE, README.md, CITATION.cff, data/README.md, *.png"
           fail: "true"
 
-      - name: Validate CITATION.cff
-        uses: dieghernan/cff-validator@v3
+# Slow
+#      - name: Validate CITATION.cff
+#        uses: dieghernan/cff-validator@v3
 
-      - name: Check whether the citation metadata from CITATION.cff is valid
-        uses: citation-file-format/cffconvert-github-action@2.0.0
-        with:
-          args: "--validate"
+#      - name: Check whether the citation metadata from CITATION.cff is valid
+#        uses: citation-file-format/cffconvert-github-action@2.0.0
+#        with:
+#          args: "--validate"
 
       - name: Copy CITATION.cff to CITATION.yml
         run: cp CITATION.cff CITATION.yml
 
-#      - name: Check minimum requirements according to draft version
-#        id: json-yaml-validate
-#        uses: GrantBirki/json-yaml-validate@v3.2.1
-#        with:
-#          comment: "true" # enable comment mode
-#          files: |
-#            CITATION.yml
-#          yaml_as_json: "true"
-#          json_schema: .schema/${{ steps.regex-match.outputs.group2 }}.json
+      - name: Validate CITATION.yml
+        id: json-yaml-validate
+        uses: GrantBirki/json-yaml-validate@v3.2.1
+        with:
+          comment: "true" # enable comment mode
+          files: |
+            CITATION.yml
+          yaml_as_json: "true"
+          json_schema: .schema/citation.json
+
+      - name: Check minimum requirements according to draft version
+        id: json-yaml-validate
+        uses: GrantBirki/json-yaml-validate@v3.2.1
+        with:
+          comment: "true" # enable comment mode
+          files: |
+            CITATION.yml
+          yaml_as_json: "true"
+          json_schema: .schema/${{ steps.regex-match.outputs.group2 }}.json
 
 
