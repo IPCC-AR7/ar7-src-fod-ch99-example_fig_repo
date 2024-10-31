@@ -54,7 +54,7 @@ jobs:
         run: cp CITATION.cff CITATION.yml
 
       - name: Validate CITATION.yml
-        id: json-yaml-validate
+        id: json-yaml-validate-all
         uses: GrantBirki/json-yaml-validate@v3.2.1
         with:
           comment: "true" # enable comment mode
@@ -64,7 +64,7 @@ jobs:
           json_schema: .schema/citation.json
 
       - name: Check minimum requirements according to draft version
-        id: json-yaml-validate
+        id: json-yaml-validate-draft-order
         uses: GrantBirki/json-yaml-validate@v3.2.1
         with:
           comment: "true" # enable comment mode
