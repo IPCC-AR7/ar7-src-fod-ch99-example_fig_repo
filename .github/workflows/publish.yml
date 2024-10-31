@@ -28,6 +28,11 @@ jobs:
         - name: Print the list of files
           run: echo "${{ steps.globfig.outputs.paths }}"
 
+        - name: Create a zenodo metadata file
+          uses: citation-file-format/cffconvert-github-action@2.0.0
+          with:
+            args: "-f zenodo -o .zenodo.json"
+
         - name: Create a draft snapshot of your repository figure content.
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,6 +41,7 @@ jobs:
           with:
             # concept: 123832
             filenames: "${{ steps.globfig.outputs.paths }}"
+            metadata: .zenodo.json
             publish: false
             sandbox: true
             # upsert-doi: true
