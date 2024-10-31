@@ -4,6 +4,7 @@ on:
   release:
     types:
       - published
+  pull_request:
   workflow_dispatch:
 
 
@@ -20,7 +21,7 @@ jobs:
             ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
           uses: zenodraft/action@0.13.3
           with:
-            concept: 14018794
+            concept: 123832
             filenames: "*.png README.md CITATION.cff LICENSE fig.*"
             publish: false
             sandbox: true
