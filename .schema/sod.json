@@ -1,6 +1,6 @@
 {
   "$defs": {
-    "References": {
+    "Reference": {
       "additionalProperties": true,
       "description": "Model for dataset information used in figures.",
       "properties": {
@@ -27,7 +27,7 @@
         "type",
         "filename"
       ],
-      "title": "References",
+      "title": "Reference",
       "type": "object"
     }
   },
@@ -44,7 +44,7 @@
     },
     "references": {
       "items": {
-        "$ref": "#/$defs/References"
+        "$ref": "#/$defs/Reference"
       },
       "title": "References",
       "type": "array"
