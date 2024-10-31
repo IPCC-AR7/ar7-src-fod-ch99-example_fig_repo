@@ -25,6 +25,9 @@ jobs:
               LICENSE
               fig.*
 
+        - name: Print the list of files
+          run: echo "${{ steps.globfig.outputs.paths }}"
+
         - name: Create a draft snapshot of your repository figure content.
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,7 +35,7 @@ jobs:
           uses: zenodraft/action@0.13.3
           with:
             # concept: 123832
-            filenames: ${{ steps.globfig.outputs.paths }}
+            filenames: "${{ steps.globfig.outputs.paths }}"
             publish: false
             sandbox: true
             # upsert-doi: true
