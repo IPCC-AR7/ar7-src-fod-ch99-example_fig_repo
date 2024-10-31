@@ -88,7 +88,7 @@ authors:
     orcid: "https://orcid.org/0000-0000-0000-0001"
 references:
   - title: Historical CO2 Record from the Vostok Ice Core
-  - authors:
+    authors:
       - name: J.M. Barnola et al.
     type: data
     data-type: CSV
