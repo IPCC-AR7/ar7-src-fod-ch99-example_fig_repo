@@ -10,7 +10,10 @@ change from one draft to the next. If you don't know yet the draft figure number
 
 ## Repository content
 
-The content that TSUs expect is minimal for the First Order Draft, and grows gradually as we near the Final Government Draft. 
+The content that TSUs expect the First Order Draft is minimal, and grows gradually as we near the Final Government Draft.
+The idea of starting early is to build experience in data and code curation, so things aren't rushed as we near the publication date.
+A *figure repository* essentially contains the figure itself, metadata about the figure, and when applicable, the code 
+necessary to reproduce it. 
 
 ### First Order Draft
 
@@ -54,23 +57,35 @@ the *patch* number. Change `Y` is the figure changes substantially (for example 
 for minor edits (colors, marker size, typos, etc). Enter the same tag as the *Release title*, click on *Generate release notes* 
 to fill in the description, edit as needed and press *Publish release*. 
 
-## Example `CITATION.cff` file
+## The `CITATION.cff` file
 
-The file ``CITATION.cff`` holds information about the figure, who created it, how and using what reference datasets or papers.
+The file ``CITATION.cff`` holds information about the figure, who created it, how and using what reference datasets or papers. It minimally requires a `title`, `authors`, `message` and the `cff-version`. TSUs impose additional requirements depending on the draft order:
+
+- FOD: `abstract` with the figure caption;
+- SOD: `references` with the list of references (data and/or publication) used to create the figure;
+- FGD: a `doi` for each reference listed in the `references` field.  
+
+### Authors
+
+TODO: How to fill authors field (person or entity)
+Note that Zenodo storage will fail if invalid author ORCID are provided.
+
+### References
+
+TODO: How to fill references field.
+
+### Example of a `CITATION.cff` file
 
 ```yaml
 title: Title of figure, e.g. Figure 4.11 | Multiple lines of evidence for global surface air temperature (GSAT) changes for the long-term period, 2081–2100, relative to the average over 1995–2014, for all five priority scenarios.
 abstract: Standalone description of methods necessary to understand the figure.
 authors:
-  - orcid: "https://orcid.org/0000-0000-0000-0001"
+  - family-names: Asselin
     given-names: Alice
-    family-names: Asselin
-  - orcid: "https://orcid.org/0000-0000-0000-0001"
+    orcid: "https://orcid.org/0000-0000-0000-0001"
+  - family-names: Brun
     given-names: Bob
-    family-names: Brun
-keywords:
-  - "ice cores"
-  - CO2
+    orcid: "https://orcid.org/0000-0000-0000-0001"
 references:
   - title: Historical CO2 Record from the Vostok Ice Core
   - authors:
