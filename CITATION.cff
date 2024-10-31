@@ -15,6 +15,7 @@ references:
   format: csv
   doi: 10.5281/zenodo.0000000
 repository-code: "https://github.com/IPCC-AR7/ar7-src-fod-ch99-example_fig_repo"
+version: 0.0.10
 cff-version: 1.2.0
 message: "When citing this figure, please include both the data citation and the citation for the report component from which the figure originates."
 

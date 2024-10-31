@@ -1,4 +1,4 @@
-name: json-yaml-validate
+name: CITATION.cff validation
 on:
   push:
     branches:
