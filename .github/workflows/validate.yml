@@ -41,6 +41,9 @@ jobs:
           files: "LICENSE, README.md, CITATION.cff, data/README.md, *.png"
           fail: "true"
 
+      - name: Validate CITATION.cff
+        uses: dieghernan/cff-validator@v3
+
       - name: Check whether the citation metadata from CITATION.cff is valid
         uses: citation-file-format/cffconvert-github-action@2.0.0
         with:

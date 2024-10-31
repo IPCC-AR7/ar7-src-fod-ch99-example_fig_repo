@@ -1,25 +1,9 @@
-title: Title of figure, e.g. Figure 4.11 | Multiple lines of evidence for global surface air temperature (GSAT) changes for the long-term period, 2081–2100, relative to the average over 1995–2014, for all five priority scenarios.
-abstract: Standalone description of methods necessary to understand the figure.
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
 authors:
-  - orcid: https://orcid.org/0000-0000-0000-0001
-    given-names: Alice
-    family-names: Asselin
-  - orcid: https://orcid.org/0000-0000-0000-0002
-    given-names: Bob
-    family-names: Brun
-keywords:
-  - "ice cores"
-  - CO2
-references:
-  - title: Historical CO2 Record from the Vostok Ice Core
-    type: data
-    data-type: CSV
-    filename: data/vostok-ice-core/vostok.icecore.co2
-    doi: 10.5281/zenodo.3678927
-    authors:
-      - name: J.M. Barnola et al.
-license: CC0-1.0
-cff-version: 1.2.0
-message: >-
-  This figure was created through the IPCC AR7 process.
-
+- family-names: Joe
+  given-names: Johnson
+orcid: https://orcid.org/0000-0000-0000-0000
+title:
+version: 0.0.1
+date-released: 2024-10-31
