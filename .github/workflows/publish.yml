@@ -40,14 +40,16 @@ jobs:
         - name: Checkout the contents of your repository
           uses: actions/checkout@v4
 
-        - name: Zip content of data folder
-          run: (cd data; zip -r ../data.zip *)
+        - name: Scrap everything except data folder
+          run: |
+            mv data ${{ runner.temp }}
+            rm *
+            mv ${{ runner.temp }}/data/* .
 
         - uses: ipcc-ar7/publish-zenodo@v1.2
           with:
             files: |
-              data.zip
-            citation_file: data/CITATION.cff
+              *
             github_token: ${{ secrets.GITHUB_TOKEN }}
             zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
             sandbox: true
