@@ -12,7 +12,10 @@ jobs:
       runs-on: ubuntu-latest
       name: Publish figure to Zenodo
       steps:
-        - uses: ipcc-ar7/publish-zenodo@v1.1
+        - name: Checkout the contents of your repository
+          uses: actions/checkout@v4
+
+        - uses: ipcc-ar7/publish-zenodo@v1.2
           with:
             files: |
               *.png
@@ -34,10 +37,16 @@ jobs:
       runs-on: ubuntu-latest
       name: Publish data to Zenodo
       steps:
-        - uses: ipcc-ar7/publish-zenodo@v1.1
+        - name: Checkout the contents of your repository
+          uses: actions/checkout@v4
+
+        - name: Zip content of data folder
+          run: (cd data; zip -r ../data.zip *)
+
+        - uses: ipcc-ar7/publish-zenodo@v1.2
           with:
             files: |
-              data/*
+              data.zip
             citation_file: data/CITATION.cff
             github_token: ${{ secrets.GITHUB_TOKEN }}
             zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
