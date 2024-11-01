@@ -33,14 +33,11 @@ jobs:
   publish-data:
       runs-on: ubuntu-latest
       name: Publish data to Zenodo
-      defaults:
-        run:
-          working-directory: data
       steps:
         - uses: ipcc-ar7/publish-zenodo@v1.0.2
           with:
             files: |
-              *
+              data/*
             github_token: ${{ secrets.GITHUB_TOKEN }}
             zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
             sandbox: true
