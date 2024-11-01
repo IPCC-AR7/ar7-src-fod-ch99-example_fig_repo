@@ -39,7 +39,8 @@ jobs:
       steps:
         - uses: ipcc-ar7/publish-zenodo@v1
           with:
-            files: *
+            files: |
+              *
             github_token: ${{ secrets.GITHUB_TOKEN }}
             zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
             sandbox: true
