@@ -43,7 +43,7 @@ jobs:
         - name: Scrap everything except data folder
           run: |
             mv data ${{ runner.temp }}
-            rm *
+            rm -r *
             mv ${{ runner.temp }}/data/* .
 
         - uses: ipcc-ar7/publish-zenodo@v1.2
