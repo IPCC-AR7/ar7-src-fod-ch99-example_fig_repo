@@ -40,13 +40,12 @@ jobs:
         - name: Checkout the contents of your repository' data folder
           uses: actions/checkout@v4
           with:
-            sparse-checkout: |
-              data
+            path: tmp
 
         - name: Move data to the top folder
           run: |
-            mv data/* .
-            rmdir data
+            mv tmp/data/* .
+            rm -rf tmp
 
         - uses: ipcc-ar7/publish-zenodo@v1.2
           with:
