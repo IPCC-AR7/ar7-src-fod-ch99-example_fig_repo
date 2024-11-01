@@ -39,18 +39,14 @@ jobs:
       steps:
         - name: Checkout the contents of your repository' data folder
           uses: actions/checkout@v4
-          with:
-            path: tmp
 
-        - name: Move data to the top folder
-          run: |
-            mv tmp/data/* .
-            rm -rf tmp
+        - name: Zip data
+          run: (cd data; zip -r ../data.zip *)
 
         - uses: ipcc-ar7/publish-zenodo@v1.3
           with:
             files: |
-              *
+              data.zip
             github_token: ${{ secrets.GITHUB_TOKEN }}
             zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
             sandbox: true
