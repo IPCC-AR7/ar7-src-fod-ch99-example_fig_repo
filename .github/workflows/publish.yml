@@ -8,15 +8,11 @@ on:
 
 
 jobs:
-  publish:
+  publish-fig:
       runs-on: ubuntu-latest
+      name: Publish figure to Zenodo
       steps:
-        - name: Checkout the contents of your repository
-          uses: actions/checkout@v4
-
-        - name: Get file list
-          uses: tj-actions/glob@v22
-          id: globfig
+        - uses: ipcc-ar7/publish-zenodo@v1
           with:
             files: |
               *.png
@@ -25,25 +21,31 @@ jobs:
               LICENSE
               fig.*
 
-        - name: Print the list of files
-          run: echo "${{ steps.globfig.outputs.paths }}"
-
-        - name: Create a zenodo metadata file
-          uses: citation-file-format/cffconvert-github-action@2.0.0
-          with:
-            args: "-f zenodo -o .zenodo.json"
-
-        - name: Create a draft snapshot of your repository figure content.
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
-          uses: zenodraft/action@0.13.3
-          with:
-            # concept: 123832
-            filenames: "${{ steps.globfig.outputs.paths }}"
-            metadata: .zenodo.json
-            publish: false
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
             sandbox: true
-            # upsert-doi: true
-            # upsert-location:
+            publish: false
+            concept: ''
+            upsert_doi: false
+            upsert_location: doi
             verbose: true
+
+  publish-data:
+      runs-on: ubuntu-latest
+      name: Publish data to Zenodo
+      defaults:
+        run:
+          working-directory: data
+      steps:
+        - uses: ipcc-ar7/publish-zenodo@v1
+          with:
+            files: *
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
+            sandbox: true
+            publish: false
+            concept: ''
+            upsert_doi: false
+            upsert_location: doi
+            verbose: true
+

@@ -1,0 +1,62 @@
+{
+  "properties": {
+    "report": {
+      "enum": [
+        "src",
+        "wg1",
+        "wg2",
+        "wg3",
+        "syr"
+      ],
+      "title": "Report",
+      "type": "string"
+    },
+    "draft": {
+      "enum": [
+        "zod",
+        "fod",
+        "sod",
+        "fgd"
+      ],
+      "title": "Draft",
+      "type": "string"
+    },
+    "chapter": {
+      "anyOf": [
+        {
+          "enum": [
+            "spm",
+            "ts",
+            "atlas"
+          ],
+          "type": "string"
+        },
+        {
+          "pattern": "ch\\d{1,2}",
+          "type": "string"
+        },
+        {
+          "pattern": "ccp\\d{1,2}",
+          "type": "string"
+        },
+        {
+          "pattern": "ann\\d{1,2}",
+          "type": "string"
+        }
+      ],
+      "title": "Chapter"
+    },
+    "figure": {
+      "title": "Figure",
+      "type": "string"
+    }
+  },
+  "required": [
+    "report",
+    "draft",
+    "chapter",
+    "figure"
+  ],
+  "title": "RepoName",
+  "type": "object"
+}

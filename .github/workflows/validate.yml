@@ -27,13 +27,17 @@ jobs:
           text: ${{ github.event.repository.name }}
           regex: '^ar7-(\w+)-(\w+)-(\w+)-(\w+)$'
 
-      - name: Echo regexp match
-        if: ${{ steps.regex-match.outputs.match != '' }}
-        run: echo "Draft order -> ${{ steps.regex-match.outputs.group2 }}"
+      - name: Create JSON file with repo name components (report, draft, chapter, figure)
+        run: echo "{\"report\":\"${{ steps.regex-match.outputs.group1 }}\",\"draft\":\"${{ steps.regex-match.outputs.group2 }}\",\"chapter\":\"${{ steps.regex-match.outputs.group3 }}\",\"figure\":\"${{ steps.regex-match.outputs.group4 }}\"}" > repo_name.json
 
-      - name: Fail if no match
-        if: ${{ steps.regex-match.outputs.match == '' }}
-        run: echo "Repository name does not match template"; exit 1
+      - name: Check repo name components against schema
+        id: validate-repo-name
+        uses: GrantBirki/json-yaml-validate@v3.2.1
+        with:
+          comment: "true" # enable comment mode
+          files: |
+            repo_name.json
+          json_schema: .schema/repo_name.json
 
       - name: Check file existence
         uses: andstor/file-existence-action@v3
