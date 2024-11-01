@@ -12,7 +12,7 @@ jobs:
       runs-on: ubuntu-latest
       name: Publish figure to Zenodo
       steps:
-        - uses: ipcc-ar7/publish-zenodo@v1.0.1
+        - uses: ipcc-ar7/publish-zenodo@v1.0.2
           with:
             files: |
               *.png
@@ -23,7 +23,6 @@ jobs:
 
             github_token: ${{ secrets.GITHUB_TOKEN }}
             zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
-            fields: '{"communities": [{"identifier": "ipcc-ar7"}]}'
             sandbox: true
             publish: false
             concept: ''
@@ -38,13 +37,12 @@ jobs:
         run:
           working-directory: data
       steps:
-        - uses: ipcc-ar7/publish-zenodo@v1.0.1
+        - uses: ipcc-ar7/publish-zenodo@v1.0.2
           with:
             files: |
               *
             github_token: ${{ secrets.GITHUB_TOKEN }}
             zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
-            fields: ''
             sandbox: true
             publish: false
             concept: ''
