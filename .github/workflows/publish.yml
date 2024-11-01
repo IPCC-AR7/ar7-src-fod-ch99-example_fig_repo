@@ -15,7 +15,7 @@ jobs:
         - name: Checkout the contents of your repository
           uses: actions/checkout@v4
 
-        - uses: ipcc-ar7/publish-zenodo@v1.2
+        - uses: ipcc-ar7/publish-zenodo@v1.3
           with:
             files: |
               *.png
@@ -47,7 +47,7 @@ jobs:
             mv tmp/data/* .
             rm -rf tmp
 
-        - uses: ipcc-ar7/publish-zenodo@v1.2
+        - uses: ipcc-ar7/publish-zenodo@v1.3
           with:
             files: |
               *
