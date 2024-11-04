@@ -15,7 +15,10 @@ jobs:
         - name: Checkout the contents of your repository
           uses: actions/checkout@v4
 
-        - uses: ipcc-ar7/publish-zenodo@v1.3
+        - uses: ipcc-ar7/publish-zenodo@v1.4
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
           with:
             files: |
               *.png
@@ -23,14 +26,9 @@ jobs:
               CITATION.cff
               LICENSE
               fig.*
-
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
             sandbox: true
             publish: false
             concept: ''
-            upsert_doi: false
-            upsert_location: doi
             verbose: true
 
   publish-data:
@@ -43,16 +41,16 @@ jobs:
         - name: Zip data
           run: (cd data; zip -r ../data.zip *)
 
-        - uses: ipcc-ar7/publish-zenodo@v1.3
+        - uses: ipcc-ar7/publish-zenodo@v1.4
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
           with:
             files: |
               data.zip
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            zenodo_token: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
+            citation: data/CITATION.cff
             sandbox: true
             publish: false
             concept: ''
-            upsert_doi: false
-            upsert_location: doi
             verbose: true
 
