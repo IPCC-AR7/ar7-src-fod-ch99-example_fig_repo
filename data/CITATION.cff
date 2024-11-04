@@ -13,11 +13,11 @@ references:
   data-type: CSV
   filename: vostok.icecore.co2.csv
   version: 1.0
-  doi: 10.5281/zenodo.3678927
+  doi: "10.5281/zenodo.3678927"
 keywords:
   - "Topic 1"
   - "Topic 2"
 repository-code: "https://github.com/IPCC-AR7/ar7-src-fod-ch99-example_fig_repo"
-license: "CC-BY-4.0"
+license: CC-BY-4.0
 cff-version: 1.2.0
 message: "When citing this dataset, please include both the data citation and the citation for the report component from which the figure originates."
