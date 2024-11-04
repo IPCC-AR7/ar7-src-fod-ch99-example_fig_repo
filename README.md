@@ -1,4 +1,14 @@
-# Example of a repository for an IPCC figure
+# IPCC figure submission and curation template
+
+This repository is a template designed to submit figures for IPCC AR7 reports. It defines a directory structure, 
+workflows and branch rules to review and validate content. On releases, it creates two Zenodo depositions, one for the 
+figure, metadata and figure-generation code, and another for the underlying figure data. 
+
+To use this template ... TODO
+
+Check the [documentation](https://ipcc-ar7.github.io/ipcc-author-guidance/) for submitting figure and data to your TSU.
+
+## Name your repository
 
 Please name your repository according to the following convention:  ``ar7-<report>-<draft>-<chapter>-<figure>``, 
 referring to the table below for the abbreviations. 
@@ -8,26 +18,36 @@ Git users, but keeping the same repository name across drafts would lead to name
 change from one draft to the next. If you don't know yet the draft figure number, enter a descriptive name in the 
 ``figure`` field, e.g. ``cmip7_sea_ice_extent``, and change the repo name once you know your figure's number. 
 
-## Repository content
+## Repository content and submission timeline 
 
-The content that TSUs expect the First Order Draft is minimal, and grows gradually as we near the Final Government Draft.
-The idea of starting early is to build experience in data and code curation, so things aren't rushed as we near the publication date.
-A *figure repository* essentially contains the figure itself, metadata about the figure, and when applicable, the code 
-necessary to reproduce it. 
+This repository is meant to store one IPCC report figure, along with the data and code necessary to reproduce it. We know that publishing 
+clean code and data is time-consuming, and that most figures don't survive the rounds of reviews, so we're only expecting 
+code and data to be prepared for the Final Government Draft (FGD), not the First Order Draft (FOD) or Second Order Draft (SOD).
+However, we also know that delaying the data and code preparation process at the last minute will be painful for everyone 
+involved, because it will pile on the final publication rush. What we're proposing is a gradual approach to data and code 
+curation, where each draft adds a bit more content to the repository for the sake of building experience and resolving 
+issues in a stress-free environment.
+
+### Key concepts
+
+- By *data*, we mean here the data displayed in the figure, not the source datasets they derive from. Please do not commit large input datasets in this repository; 
+- By *metadata*, we mean the information about the figure, such as its title, caption, authors, and references. This information is captured in a `CITATION.cff` file, documented [here](https://citation-file-format.github.io/). 
 
 ### First Order Draft
 
 For the first order draft (FOD), include the following content:
 
-- [ ] A metadata file (`CITATION.cff`) indicating the figure title, abstract and authors;
 - [ ] The figure itself in PNG format (e.g. `ar7-<report>-<draft>-<chapter>-<figure>.v1.0.png`);
+- [ ] A metadata file (`CITATION.cff`) indicating the figure title, abstract and authors. This repo already includes an example of a `CITATION.cff` file, just fill-in the fields `title`, `abstract` and `authors` and leave the `cff-version` and `message` fields as-is.
 
 ### Second Order Draft
 
-For the second order draft (SOD), please include the additional information: 
+For the second order draft (SOD), please include additional information: 
 
-- [ ] The list of references (datasets, papers) used to create the figure, to be included in `CITATION.cff` file (see example below). At 
-  this point, specifying a `DOI` for these references is not strictly necessary.   
+- [ ] A draft version of the data underlying the figure in the `data/` directory;
+- [ ] A metadata file `data/CITATION.cff`) indicating the data title, authors and references to source data and papers; 
+- [ ] A draft version of the code generating the figure from the data; 
+- [ ] A reference to the data in the `CITATION.cff` file in the `references` field.
 
 ### Final Government Draft
 
@@ -36,18 +56,13 @@ important to complete the metadata and make sure the figure creation script work
 figures *live* during the government review. 
 
 For the final government draft, please include the following additional content:
-- [ ] A figure generation script, e.g. `fig.py` or `fig.R`. If instead the figure was created using a graphical user 
+- [ ] A figure generation script named `fig.*`, e.g. `fig.py` or `fig.R`. If instead the figure was created using a graphical user 
   interface (e.g. ArcGIS), please include detailed instructions in this README on how to reproduce the figure;  
 - [ ] A list of the packages and their version necessary to run the script (`requirements.txt`);
-- [ ] A `data/` directory including one subdirectory for each dataset displayed in the figure;
 - [ ] A `data/README.md` file explaining how to download the data and populate the `data/` directory. If possible, 
   automate the process using a script, e.g. `download.py` or `download.R` that can be run from the command line;
-- [ ] A DOI for each reference listed in `CITATION.cff` (e.g. just `10.5281/zenodo.3678927`, without the `http://doi.org/`).
+- [ ] A DOI for each reference listed in `CITATION.cff` and `/data/CITATION.cff` (e.g. just `10.5281/zenodo.3678927`, without the `http://doi.org/`).
 
-Please do not include the datasets in this repo. People who want to reproduce the figure are expected to fetch the 
-datasets themselves and store them in the `data/` directory, according to instructions provided in the `data/README.md` 
-file. This is intended to keep a clear distinction between data and code, and facilitate their curation according to best 
-practices for each.
 
 ## Creating releases
 
@@ -56,6 +71,8 @@ convention `vX.Y.Z`, where `X` is 0, 1, 2, 3 for ZOD, FOD, SOD and FGD respectiv
 the *patch* number. Change `Y` is the figure changes substantially (for example the addition of a new element), and change `Z` 
 for minor edits (colors, marker size, typos, etc). Enter the same tag as the *Release title*, click on *Generate release notes* 
 to fill in the description, edit as needed and press *Publish release*. 
+
+TODO: Zenodo follow-up
 
 ## The `CITATION.cff` file
 
@@ -87,14 +104,12 @@ authors:
     given-names: Bob
     orcid: "https://orcid.org/0000-0000-0000-0001"
 references:
-  - title: Historical CO2 Record from the Vostok Ice Core
+  - title: Data for Figure 4.11 of AR7 SRC Chapter 4
     authors:
-      - name: J.M. Barnola et al.
+      - name: A. Asselin et al.
     type: data
     data-type: CSV
-    filename: data/vostok-ice-core/vostok.icecore.co2
     doi: 10.5281/zenodo.3678927
-license: CC0-1.0
 cff-version: 1.2.0
 ```
 
@@ -146,3 +161,4 @@ High level overview of what the figure presents.
 - Install requirements by running `pip install -r requirements.txt`;
 - Run the script `fig.py`.
 ```
+
