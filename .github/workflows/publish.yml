@@ -13,7 +13,9 @@ jobs:
         - name: Checkout the contents of your repository
           uses: actions/checkout@v4
 
-        - uses: ipcc-ar7/publish-zenodo@v1.9
+        - name: Publish figure to Zenodo
+          working-directory: figure
+          uses: ipcc-ar7/publish-zenodo@v1.9
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
@@ -21,7 +23,8 @@ jobs:
             # Note that Zenodo only accepts root level files.
             files: |
               *.png
-              README.md
+              *.pdf
+              README.*
             metadata: figure.yml
             sandbox: true
             publish: false
