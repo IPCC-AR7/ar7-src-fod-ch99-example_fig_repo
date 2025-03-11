@@ -1,12 +1,9 @@
 name: Publish to Zenodo
 on:
   # Trigger when you publish a release via GitHub's release page or manually via the Actions tab
-  - release:
-      types:
-        - published
-  - workflow_dispatch:
-      - tags:
-          description: 'Publish to Zenodo'
+  release:
+    types:
+      - published
 
 jobs:
   publish-fig:
