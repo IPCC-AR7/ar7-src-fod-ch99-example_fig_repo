@@ -39,6 +39,15 @@ jobs:
             repo_name.json
           json_schema: .schema/repo_name.json
 
+      - name: Check figure.yml against Zenodo schema
+        id: validate-figure
+        uses: GrantBirki/json-yaml-validate@v3.2.1
+        with:
+          comment: "true" # enable comment mode
+          files: |
+            figure/figure.yml
+          json_schema: .schema/zenodo_v0.3.0.json
+
       - name: Check file existence
         uses: andstor/file-existence-action@v3
         with:
