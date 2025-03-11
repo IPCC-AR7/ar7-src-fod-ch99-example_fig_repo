@@ -46,6 +46,7 @@ jobs:
           comment: "true" # enable comment mode
           files: |
             figure/figure.yml
+          yaml_as_json: "true"
           json_schema: .schema/zenodo_v0.3.0.json
           avj_strict_mode: "false"
 
