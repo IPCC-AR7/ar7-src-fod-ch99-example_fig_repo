@@ -15,42 +15,39 @@ jobs:
         - name: Checkout the contents of your repository
           uses: actions/checkout@v4
 
-        - uses: ipcc-ar7/publish-zenodo@v1.4
+        - uses: ipcc-ar7/publish-zenodo@v1.6
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
           with:
             files: |
-              *.png
+              figure/*
               README.md
-              CITATION.cff
-              LICENSE
-              fig.*
             sandbox: true
             publish: false
             concept: ''
             verbose: true
 
-  publish-data:
-      runs-on: ubuntu-latest
-      name: Publish data to Zenodo
-      steps:
-        - name: Checkout the contents of your repository' data folder
-          uses: actions/checkout@v4
-
-        - name: Zip data
-          run: (cd data; zip -r ../data.zip *)
-
-        - uses: ipcc-ar7/publish-zenodo@v1.4
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
-          with:
-            files: |
-              data.zip
-            citation: data/CITATION.cff
-            sandbox: true
-            publish: false
-            concept: ''
-            verbose: true
+#  publish-data:
+#      runs-on: ubuntu-latest
+#      name: Publish data to Zenodo
+#      steps:
+#        - name: Checkout the contents of your repository' data folder
+#          uses: actions/checkout@v4
+#
+#        - name: Zip data
+#          run: (cd data; zip -r ../data.zip *)
+#
+#        - uses: ipcc-ar7/publish-zenodo@v1.4
+#          env:
+#            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#            ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
+#          with:
+#            files: |
+#              data.zip
+#            citation: data/CITATION.cff
+#            sandbox: true
+#            publish: false
+#            concept: ''
+#            verbose: true
 
