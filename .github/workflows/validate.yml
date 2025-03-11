@@ -48,7 +48,7 @@ jobs:
             figure/figure.yml
           yaml_as_json: "true"
           json_schema: .schema/zenodo_v0.3.0.json
-          avj_strict_mode: "false"
+          ajv_strict_mode: "false"
 
       - name: Check file existence
         uses: andstor/file-existence-action@v3
