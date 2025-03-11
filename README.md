@@ -6,6 +6,7 @@ figure, metadata and figure-generation code, and another for the underlying figu
 
 To use this template ... TODO
 
+
 Check the [documentation](https://ipcc-ar7.github.io/ipcc-author-guidance/) for submitting figure and data to your TSU.
 
 ## Name your repository
@@ -162,3 +163,10 @@ High level overview of what the figure presents.
 - Run the script `fig.py`.
 ```
 
+## For developers
+
+To fetch a Zenodo record: 
+```bash
+curl https://sandbox.zenodo.org/api/records/<record id>?access_token=<access token> -H 'accept: application/vnd.zenodo.v1+json'
+```
+Other output formats are available. Use DataCite to extract translated titles and descriptions.
