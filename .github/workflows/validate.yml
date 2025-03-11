@@ -45,15 +45,6 @@ jobs:
           files: "LICENSE, README.md, CITATION.cff, data/README.md, *.png"
           fail: "true"
 
-      - name: Validate CITATION.yml
-        id: json-yaml-validate-all
-        uses: GrantBirki/json-yaml-validate@v3.2.1
-        with:
-          comment: "true" # enable comment mode
-          files: |
-            CITATION.yml
-          yaml_as_json: "true"
-          json_schema: .schema/citation.json
 
 
 
