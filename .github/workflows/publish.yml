@@ -18,10 +18,11 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             ZENODO_SANDBOX_ACCESS_TOKEN: ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}
           with:
+            # Note that Zenodo only accepts root level files.
             files: |
-              figure/*
+              *.png
               README.md
-            metadata: figure/figure.yml
+            metadata: figure.yml
             sandbox: true
             publish: false
             concept: ''
