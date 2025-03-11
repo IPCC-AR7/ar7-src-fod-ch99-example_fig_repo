@@ -1,4 +1,4 @@
-name: CITATION.cff validation
+name: Schema validation
 on:
   push:
     branches:
