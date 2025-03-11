@@ -21,6 +21,7 @@ jobs:
             files: |
               figure/*
               README.md
+            metadata: figure/figure.yml
             sandbox: true
             publish: false
             concept: ''
