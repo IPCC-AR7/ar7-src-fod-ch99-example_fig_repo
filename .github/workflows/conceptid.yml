@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Get Zenodo concept ID
     steps:
+      - name: Checkout the contents of your repository
+        uses: actions/checkout@v4
+
       - name: Get Zenodo concept ID
         id: get_concept_id
         env:
