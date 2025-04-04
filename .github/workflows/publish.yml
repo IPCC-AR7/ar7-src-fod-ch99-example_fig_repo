@@ -4,6 +4,10 @@ on:
   release:
     types:
       - published
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
 
 jobs:
   publish-fig:
@@ -24,8 +28,8 @@ jobs:
               README.md
             metadata: figure.yml
             sandbox: true
-            publish: false
-            concept: ''
+            publish: true
+            concept: '180364'
             verbose: true
 
 #  publish-data:
