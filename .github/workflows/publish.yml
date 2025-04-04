@@ -29,8 +29,7 @@ jobs:
             concept: ${{ vars.ZENODO_CONCEPT_ID }}
             verbose: true
 
-
- publish-data:
+  publish-data:
      runs-on: ubuntu-latest
      name: Publish data to Zenodo
      steps:
@@ -46,7 +45,7 @@ jobs:
              data/*
            metadata: data/data.yml
            sandbox: true
-           publish: false
+           publish: true
            concept: ''
            verbose: true
 
