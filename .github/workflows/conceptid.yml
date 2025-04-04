@@ -1,8 +1,5 @@
 name: Get Zenodo concept ID
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 
@@ -45,6 +42,7 @@ jobs:
               fi
 
               # Set the Concept ID as a repository variable
+              # This fails due to insufficient permissions
               gh variable set ZENODO_CONCEPT_ID --body "$CONCEPT_ID"
           else
               echo "ZENODO_CONCEPT_ID=${{ vars.ZENODO_CONCEPT_ID }}"

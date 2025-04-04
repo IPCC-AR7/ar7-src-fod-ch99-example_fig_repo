@@ -1,0 +1,16 @@
+title: "Data for IPCC AR7 WGI Figure 3.3: Annual mean surface temperature (1995–2014)"
+description: "Annual-mean surface (2 m) air temperature (°C) for the 
+    period 1995–2014. "
+creators:
+  - name: "Mai Hong"
+    affiliation: "IPCC AR7 WGI TSU"
+contributors:
+  - name: "David Huard"
+    orcid: "https://orcid.org/0000-0003-0311-5498"
+    type: "ContactPerson"
+language: "eng"
+version: "0.0.44"
+keywords:
+  - "surface"
+  - "temperature"
+upload_type: "dataset"
