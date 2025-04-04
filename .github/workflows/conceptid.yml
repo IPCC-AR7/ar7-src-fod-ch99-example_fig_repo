@@ -5,22 +5,20 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-  variables: write
-  contents: read
 
 jobs:  
   get-concept-id:  
     if: >-
       ${{ !github.event.repository.is_template }}
-
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     name: Get Zenodo concept ID
     steps:
       - name: Get Zenodo concept ID
         id: get_concept_id
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Check if the ZENODO_CONCEPT_ID variable is set
           if [ -z "${{ vars.ZENODO_CONCEPT_ID }}" ]; then
@@ -45,15 +43,7 @@ jobs:
               fi
 
               # Set the Concept ID as a repository variable
-              gh api --method POST \
-                -H "Accept: application/vnd.github+json" \
-                -H "X-GitHub-Api-Version: 2022-11-28" \
-                "/repos/${{ github.repository }}/actions/variables" \
-                -f "name=ZENODO_CONCEPT_ID" \
-                -f "value=$CONCEPT_ID" || {
-                  echo "Error: Failed to set ZENODO_CONCEPT_ID variable"
-                  exit 1
-                }
+              gh variable set ZENODO_CONCEPT_ID --body "$CONCEPT_ID"
           else
               echo "ZENODO_CONCEPT_ID=${{ vars.ZENODO_CONCEPT_ID }}"
           fi
