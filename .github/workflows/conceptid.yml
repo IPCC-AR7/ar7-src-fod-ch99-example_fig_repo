@@ -41,10 +41,11 @@ jobs:
               fi
 
               # Set the Concept ID as a repository variable
-              gh api --method PUT \
+              gh api --method POST \
                 -H "Accept: application/vnd.github+json" \
                 -H "X-GitHub-Api-Version: 2022-11-28" \
-                "/repos/${{ github.repository }}/actions/variables/ZENODO_CONCEPT_ID" \
+                "/repos/${{ github.repository }}/actions/variables" \
+                -f "name=ZENODO_CONCEPT_ID" \
                 -f "value=$CONCEPT_ID" || {
                   echo "Error: Failed to set ZENODO_CONCEPT_ID variable"
                   exit 1
