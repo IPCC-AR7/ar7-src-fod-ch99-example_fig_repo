@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Get Zenodo concept ID
         id: get_concept_id
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           # Check if the ZENODO_CONCEPT_ID variable is set
           if [ -z "${{ vars.ZENODO_CONCEPT_ID }}" ]; then
