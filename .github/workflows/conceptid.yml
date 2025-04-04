@@ -10,8 +10,7 @@ jobs:
   get-concept-id:  
     if: >-
       ${{ !github.event.repository.is_template }}
-    permissions:
-      contents: write
+    permissions: write-all
     runs-on: ubuntu-latest
     name: Get Zenodo concept ID
     steps:
