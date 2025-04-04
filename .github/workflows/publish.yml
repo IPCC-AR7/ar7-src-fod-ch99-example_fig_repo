@@ -7,44 +7,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  get_concept_id:
-    # Check is repository variable ZENODO_CONCEPT_ID exists, if not create a new one and get an ID from Zenodo.
-    runs-on: ubuntu-latest
-    name: Get Zenodo concept ID
-    steps:
-      - name: Get Zenodo concept ID
-        id: get_concept_id
-        run: |
-            # Check if the ZENODO_CONCEPT_ID variable is set
-            if [ -z "${{ vars.ZENODO_CONCEPT_ID }}" ]; then
-                # Create a new deposition and get the Concept ID
-                echo "Creating deposition..."
-                RESPONSE=$(curl -s -X POST "https://sandbox.zenodo.org/api/deposit/depositions" \
-                  -H "Content-Type: application/json" \
-                  -H "Authorization: Bearer ${{ secrets.ZENODO_SANDBOX_ACCESS_TOKEN }}" \
-                  -d '{}')
-
-                echo "Zenodo API Response: $RESPONSE"
-                
-                DEPOSITION_ID=$(echo "$RESPONSE" | jq -r '.id // empty')
-                CONCEPT_ID=$(echo "$RESPONSE" | jq -r '.conceptrecid // empty')
-
-                echo "Deposition ID: $DEPOSITION_ID"
-                echo "Concept ID: $CONCEPT_ID"
-
-                # Set the Concept ID as a repository variable
-                gh api 
-                  --method PUT \
-                  -H "Accept: application/vnd.github+json" \
-                  -H "X-GitHub-Api-Version: 2022-11-28" \
-                  /repos/${{ github.repository }}/actions/variables/ZENODO_CONCEPT_ID \
-                  -f value=$CONCEPT_ID
-            else
-                echo "ZENODO_CONCEPT_ID=${{ vars.ZENODO_CONCEPT_ID }}"
-            fi
-          
-          
-
   publish-fig:
       runs-on: ubuntu-latest
       name: Publish figure to Zenodo

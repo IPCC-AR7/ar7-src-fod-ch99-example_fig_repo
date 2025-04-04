@@ -1,0 +1,17 @@
+{
+  "creators": [
+    {
+      "name": "Huard, David",
+      "orcid": "0000-0003-0311-5498"
+    }
+  ],
+  "description": "Data used to create Figure X.Y in the IPCC AR7 SRC",
+  "keywords": [
+    "Topic 1",
+    "Topic 2"
+  ],
+  "license": {
+    "id": "CC-BY-4.0"
+  },
+  "title": "Data for AR7 SRC Figure X.Y"
+}
